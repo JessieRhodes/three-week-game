@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The Psychic Game</title>
+</head>
+<body>
+
+	<h1 id="guess"> Guess what letter I am thinking of</h1>
+
+	<img src="three-week-game/assets/images/eyesimage.jpg" alt="creepy eyes"> 
+
+	<div id="wins"> wins </div>
+
+	<div id="losses"> losses </div>
+
+	<div id="guessesLeft"> guesses left </div>
+
+	<div id="guesses-so-far"> your guesses so far </div>
+
+<script type="text/javascript">
+
+alert("prepare to be Psychic");
+
+var userGuess = 0;
+var computerLetter = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var wins = 0;
+var losses = 0;
+var guessesLeft = 3;
+var GuessesSoFar = 0;
+
+function updateWins(){
+	wins++;
+	console.log("you win");
+};
+
+function updateLosses(){
+	losses++;
+	console.log("you lose");
+};
+
+function updateGuesses(){
+	guessesLeft--;
+	console.log("guesses remaining")
+};
+function updateGuessesSoFar(){
+	GuessesSoFar++;
+	console.log("guesses so far")
+
+};
+
+//computer chooses random letter
+
+var randomNumber = Math.floor(Math.random()*computerLetter.length);
+	console.log(randomNumber);
+
+var computerChoice = computerLetter[randomNumber]; 
+	console.log(computerChoice);
+
+//user guesses letter
+
+document.onkeyup = function(event) {
+
+// Determines which exact key was selected. Make it lowercase
+var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+// Alerts with user guess
+	alert(userGuess);
+
+// Alerts with Computer guess
+	alert(computerChoice);
+
+//if correct, win increases by 1
+if (userGuess === computerChoice){
+        updateWins();
+        console.log(wins);
+        document.getElementById("wins").innerHTML = "<div> Wins </wins>" + wins;
+
+    }
+//if incorrect, losses increase by 1    
+	else if (userGuess !== computerChoice){
+        updateLosses();
+        console.log(losses);
+        document.getElementById("losses").innerHTML = "<div> Losses </div>" + losses;
+
+        }
+//track guesses left
+	if (userGuess !== computerChoice){
+		updateGuesses();
+		console.log(guessesLeft);
+		document.getElementById("guessesLeft").innerHTML = "<div> Guesses Left </div>" + guessesLeft;
+		}   
+//track guesses so far
+	updateGuessesSoFar();
+	console.log(GuessesSoFar);
+	document.getElementById("guesses-so-far").innerHTML = "<div> Guesses So Far </div>" + GuessesSoFar;
+
+//reset game without refreshing page
+	if (guessesLeft === 0) {
+		guessesLeft = 3;
+		GuessesSoFar = 0;
+		console.log("when guesses left is 0 this is new guesses left" + guessesLeft);
+		}	
+	  
+}//end keyboard press
+
+
+
+
+
+
+
+
+
+//games restarts
+
+	
+	
+
+
+</script>
+	
+</body>
+</html>

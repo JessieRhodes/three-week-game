@@ -1,1 +1,1 @@
-<?php include_once("three-week-game.html"); ?>
+<?php include_once("the-psychic-game.html"); ?>
